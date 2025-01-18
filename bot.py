@@ -6,8 +6,8 @@ from datetime import datetime
 class ProductService:
     def __init__(self, api_key: str):
         self.api_key = api_key
-        self.base_url = "http://3.146.90.152:2040"
-        self.cart_url = "http://3.146.90.152:2070"
+        self.base_url = "http://3.90.152:2040"
+        self.cart_url = "http://3.90.152:2070"
         self.headers = {
             'Authorization': f'Bearer {self.api_key}',
             'Content-Type': 'application/json'
@@ -167,7 +167,7 @@ class ProductService:
 
 class GeminiChatbot:
     def __init__(self):
-        genai.configure(api_key="AIzaSyDWdmYNfMRPWdtdt_4jJpUEW8i_xjRqvOM")
+        genai.configure(api_key="AIzaSyDWdmY")
         self.model = genai.GenerativeModel('gemini-pro')
         self.current_pincode = None
         self.available_product_types = []
@@ -177,7 +177,7 @@ class GeminiChatbot:
         self.waiting_for_date = False
         self.waiting_for_quantity = False
         self.cart_product_name = None
-        self.product_service = ProductService(api_key="eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJoRl9MajJQQzdYMEZ6UzdsS042RVprZjhabk4tdHU4alREQU9FaEJPLXFnIn0.eyJleHAiOjE3MzYxNzE5NjksImlhdCI6MTczNjEzNTk3MSwiYXV0aF90aW1lIjoxNzM2MTM1OTY5LCJqdGkiOiIyYzFjNTQ1My03ODdlLTQzNDYtYTUzZi1hNTM5ZWQ4ZmZlZjkiLCJpc3MiOiJodHRwczovL2F1dGgudGhtcDkubWFya2V0cGxhY2UudGhic2NvZXRnLmNvbS9yZWFsbXMvR292ZXJubWVudC1jdXN0b21lciIsImF1ZCI6WyJjb3VwbGVyIiwiYWNjb3VudCJdLCJzdWIiOiJkNmM5NTNlNy0xOWExLTRhMjQtOTFhOC1mZmZiZjI5YWQ1YzkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJHb3Zlcm5tZW50LWN1c3RvbWVyLWNsaWVudCIsInNlc3Npb25fc3RhdGUiOiI5NDUzMzJmNS1iYWRlLTQ4YTMtODhhNC01ZTQ5YmQ4MjFjZGIiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiZGVmYXVsdC1yb2xlcy1Hb3Zlcm5tZW50LWN1c3RvbWVyIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBzdG9yZV9pZCBlbnRpdHktaWQgZW1haWwgcmVhbG0tbmFtZSBwcm9maWxlIGN1c3RvbWVyX2lkIiwic2lkIjoiOTQ1MzMyZjUtYmFkZS00OGEzLTg4YTQtNWU0OWJkODIxY2RiIiwic3RvcmVfaWQiOiIzIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJBaG1lZCBBbC1NYW5zb29yaSIsInByZWZlcnJlZF91c2VybmFtZSI6InZpamF5X3JhY2hha29uZGFAdGhicy5jb20iLCJnaXZlbl9uYW1lIjoiQWhtZWQiLCJyZWFsbS1uYW1lIjoiR292ZXJubWVudC1jdXN0b21lciIsImN1c3RvbWVyX2lkIjoiMyIsImZhbWlseV9uYW1lIjoiQWwtTWFuc29vcmkiLCJlbnRpdHktaWQiOiJHb3Zlcm5tZW50LWN1c3RvbWVyIiwiZW1haWwiOiJ2aWpheV9yYWNoYWtvbmRhQHRoYnMuY29tIn0.GW-ZOdEYV1NIrcKPDX9dbTbr6okGmpZxGu8YuCAGqtgXF0FJwKklUJgUDwCTHCey7dipa1ZBHXya-Z0rZBJKzTYRLpQo2oAKhcDXO9m_CS7es0w6bwOklkXgdZYZzPOaWuw-HK-T83aQRGfxnTwAGw6tP8Khm_M8sH0aYIhitpF83Am7JeiWidMmrYRUj3aPiJKgZFqhaqxaHIdP3bkHCRxIP1Nbgmfq0enlQvz5uG2pz59lpmuKYQJBJOnWqlFvMpGDQRs74QlQZYmY87dzAAj8fwrv26tGZicSsDk_SaCwwSuuWsfYzGEFsqU-Ls5bxTXTC3JviACTFX9eVTu8MSdbOdDe1AnNGzpYmjGhbt4no3jvkzXmw4q5WzrySavVqvZErdz2KVF5t2PMf2MLMZoi9WjU2HxoFtoLdsfkAAIPokdo2myUz66FCKEAC_ECHDkSbgBYeDzxZF54wT9L_VAbOqS5tnF8_QSdVlY6VvRIS9KJtIN7Om6c1Az8ZDg4M2AB_qXiFsdMajnxLbo0MoU-hb9jQvjWMS5KHfTrPmTzhc9hG4HLV9ypkjAPTtGkAsVQO7l-83tp3U1IIEXtXdP9Jl7JUr07t6DAYB3e98jF5Sk_F8baOQizcAJpNTTg7AtQ0J2N6msg7pSOz9cp-LbtvGCj4knzsBqlc8H6MJI")
+        self.product_service = ProductService(api_key="eyJhbGciOiJSUzI1NiIsI")
 
     def validate_pincode_input(self, pincode: str) -> bool:
         """Validate if pincode is 6 digits"""
